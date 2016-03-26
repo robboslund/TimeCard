@@ -14,15 +14,15 @@
 ActiveRecord::Schema.define(version: 20150809022253) do
 
   create_table "employees", force: :cascade do |t|
-    t.string "id"
-    t.string "First_Name"
-    t.string "Last_Name"
-    t.string "username"
-    t.string "password"
-    t.string "hours_worked"
-    t.string "Pay_per_hour"
-    t.integer "isManager"
-   
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.string   "password"
+    t.integer  "hours_worked"
+    t.integer  "pay_per_hour"
+    t.integer  "isManager"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
