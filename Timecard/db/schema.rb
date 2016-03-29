@@ -24,5 +24,11 @@ ActiveRecord::Schema.define(version: 20150809022253) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
+  
+  create_table "employee_hours", force: :cascade do |t|
+    t.string "username"
+    t.integer "hours"
+    t.string "status"
+  end
+  
 end
