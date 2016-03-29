@@ -1,13 +1,17 @@
 !!!
 %html
   %head
-    %title Team Timecard!
+    %title 
+      Team Timecard!
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
   %body
-    %h1.title Team Timecard!
+    %h1.title 
+      Team Timecard!
+      %div{:class => "homepage"}
+        =link_to 'Homepage', employees_path
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]

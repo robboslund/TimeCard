@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   #   resources :products
 
   post 'employees/check' => 'employees#check', as: :check
+  get 'employees/punch_hours' => 'employees#punch_hours', as: :punch_hours
+
   resources :employees
   
   # Example resource route with options:

@@ -11,8 +11,15 @@ div#main {
   padding: 0 20px 20px;
 }
 #notice{
-  color:green;
+  color:red;
   text-align:center;
+}
+
+.homepage{
+  font-size:10pt;
+  color:maroon;
+  display:inline;
+  padding-left:300px;
 }
 a {
   background: transparent;
