@@ -14,7 +14,7 @@ class EmployeesController < ApplicationController
     if Employee.exists?(username: params[:employee][:username], password: params[:employee][:password]) then
        #flash[:notice] = params[:employee][:username]
        session[:current_user] = params[:employee][:username]
-      redirect_to punch_hours_url
+       redirect_to punch_hours_url
     else
       flash[:notice] = "login failed"
       redirect_to employees_path
@@ -23,8 +23,15 @@ class EmployeesController < ApplicationController
   
   def punch_hours
     @employee = Employee.find_by username: session[:current_user]
+    #session[:current_user] = params[:employee][:hours_worked]
+    #redirect_to view_hours_url
   end
-
+  
+  def view_hours
+    
+    
+  end
+ 
   def index
     @employees = Employee.all
   end
