@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   post 'employees/check' => 'employees#check', as: :check
   get 'employees/punch_hours' => 'employees#punch_hours', as: :punch_hours
- get 'employees/view_hours' => 'employees#view_hours', as: :view_hours
+  post 'employees/view_hours' => 'employees#view_hours', as: :view_hours
 
   resources :employees
   

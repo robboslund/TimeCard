@@ -24,11 +24,9 @@ class EmployeesController < ApplicationController
   def punch_hours
     @employee = Employee.find_by username: session[:current_user]
     #session[:current_user] = params[:employee][:hours_worked]
-    #redirect_to view_hours_url
   end
   
   def view_hours
-    
     
   end
  
