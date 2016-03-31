@@ -12,5 +12,11 @@ class CreateEmployees < ActiveRecord::Migration
       # of when movies are added or modified:
       t.timestamps
     end
+    
+    create_table :employee_hours do |t|
+      t.string :username
+      t.integer :hours
+      t.string :status
+    end
   end
 end
