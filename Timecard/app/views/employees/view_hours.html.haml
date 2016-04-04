@@ -1,6 +1,15 @@
 -#  This file is app/views/employees/view_hour.html.haml
 %h1 View Hours
 
-    
-%h3 You worked zero hours this week :D
+%table#movies
+  %thead
+    %tr
+      %th Hours Submitted
+      %th Status
+  %tbody
+    - @employee_hours.each do |hours|
+      %tr
+        %td= hours.hours 
+        %td= hours.status
+
 

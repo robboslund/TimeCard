@@ -12,7 +12,6 @@ class EmployeesController < ApplicationController
   
   def check
     if Employee.exists?(username: params[:employee][:username], password: params[:employee][:password]) then
-       #flash[:notice] = params[:employee][:username]
        session[:current_user] = params[:employee][:username]
        redirect_to punch_hours_url
     else
@@ -22,12 +21,17 @@ class EmployeesController < ApplicationController
   end
   
   def punch_hours
-    @employee = Employee.find_by username: session[:current_user]
-    #session[:current_user] = params[:employee][:hours_worked]
+    @employee= Employee.find_by username: session[:current_user]
+  end
+  
+  def add_hours
+    hours_worked = params[:employee_hour][:hours].to_i
+    emp_hour = Employee_Hour.create(username: session[:current_user], hours: hours_worked, status: "pending")
+    redirect_to view_hours_url
   end
   
   def view_hours
-    
+    @employee_hours = Employee_Hour.where(username: session[:current_user])
   end
  
   def index
@@ -36,30 +40,6 @@ class EmployeesController < ApplicationController
 
   def new
     # default: render 'new' template
-  end
-
-  def create
-    @employee = Employee.create!(employee_params)
-    #flash[:notice] = "#{@movie.title} was successfully created."
-    redirect_to employees_path
-  end
-
-  def edit
-    @employee = Employee.find params[:id]
-  end
-
-  def update
-    @employee = Employee.find params[:id]
-    @employee.update_attributes!(employee_params)
-    #flash[:notice] = "#{@movie.title} was successfully updated."
-    redirect_to employee_path(@employee)
-  end
-
-  def destroy
-    @employee = Employee.find(params[:id])
-    @employee.destroy
-    #flash[:notice] = "Movie '#{@movie.title}' deleted."
-    redirect_to employees_path
   end
 
 end

@@ -5,8 +5,8 @@
     = @employee.first_name
     
 %h3 Please enter hours for this week 
-= form_tag view_hours_url, :method => :post do
-    = label :employee, :hours_worked, 'Hours Worked'
-    = text_field :employee, 'hours_worked'
+= form_tag add_hours_url, :method => :post do
+    = label :employee_hour, :hours, 'Hours Worked'
+    = text_field :employee_hour, 'hours'
     %br
     = submit_tag 'Click this button'
