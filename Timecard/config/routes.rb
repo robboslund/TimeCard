@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -18,8 +22,16 @@ Rails.application.routes.draw do
   get 'employees/punch_hours' => 'employees#punch_hours', as: :punch_hours
   get 'employees/view_hours' => 'employees#view_hours', as: :view_hours
   post 'employees/add_hours' => 'employees#add_hours', as: :add_hours
+  
+  get 'sessions/index' => 'sessions#index', as: :session_index
+  get 'sessions/logout' => 'sessions#destroy', as: :session_logout
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+  
 
+  resources :sessions, only: [:create, :destroy]
   resources :employees
   
   # Example resource route with options:
