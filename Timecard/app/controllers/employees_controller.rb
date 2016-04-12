@@ -22,6 +22,7 @@ class EmployeesController < ApplicationController
   
   def punch_hours
     @employee= Employee.find_by username: session[:current_user]
+    @hours_worked = Employee.find_by hours_worked: session
   end
   
   def add_hours
@@ -36,6 +37,10 @@ class EmployeesController < ApplicationController
  
   def index
     @employees = Employee.all
+  end
+  
+  def manager_view_hours
+    @employee = Employee.find_by username: session[:current_user]
   end
 
   def new

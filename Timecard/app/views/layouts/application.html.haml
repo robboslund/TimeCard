@@ -17,7 +17,7 @@
           =link_to "Logout of Google", session_logout_url
         -else
           =link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
-          
+      
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
