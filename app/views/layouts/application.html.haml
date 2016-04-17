@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title 
+      Team Timecard!
+    = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %h1.title 
+      Team Timecard!
+      %div{:class => "homepage"}
+        =link_to 'Homepage', employees_path
+      %div{:class => "homepage"}
+        -if session[:user_id] 
+          =link_to "Logout of Google", session_logout_url
+        -else
+          =link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
+      
+    #main
+      - if flash[:notice]
+        #notice.message= flash[:notice]
+      - elsif flash[:warning]
+        #warning.message= flash[:warning]
+
+      = yield
