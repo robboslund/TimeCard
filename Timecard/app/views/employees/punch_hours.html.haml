@@ -4,10 +4,13 @@
 %h2 
     Welcome
     = @employee.first_name
-    -if @employee.isManager == 0
-        %h5
-            = link_to 'View Employee Hours', manager_view_hours_url
-        %h3 OR
+    %h5
+        -if @employee.isManager == 0
+            = link_to 'Approve/Deny Hours', manager_view_hours_url
+        %br
+        %br
+        =link_to "View Submitted Hours", view_hours_url
+    %h3 OR
     
 %h3 Please enter hours for this week
 = form_tag add_hours_url, :method => :post do

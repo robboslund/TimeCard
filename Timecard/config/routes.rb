@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   get 'employees/punch_hours' => 'employees#punch_hours', as: :punch_hours
   get 'employees/view_hours' => 'employees#view_hours', as: :view_hours
   post 'employees/add_hours' => 'employees#add_hours', as: :add_hours
-  get 'employees/manager_view_hours' => 'employees#manager_view_hours', as: :manager_view_hours
+  get 'employees/manager_view_hours' => 'managers#manager_view_hours', as: :manager_view_hours
+  post 'employees/manager_view_hours/change_status' => 'managers#change_status', as: :status
+  get 'employees/logout' => 'employees#logout', as: :logout
   
   get 'sessions/index' => 'sessions#index', as: :session_index
   get 'sessions/logout' => 'sessions#destroy', as: :session_logout

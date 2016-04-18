@@ -20,6 +20,11 @@ class EmployeesController < ApplicationController
     end
   end
   
+  def logout
+    session.delete(:current_user)
+    redirect_to employees_path
+  end
+  
   def punch_hours
     @employee= Employee.find_by username: session[:current_user]
     @hours_worked = Employee.find_by hours_worked: session

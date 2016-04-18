@@ -11,7 +11,13 @@
     %h1.title 
       Team Timecard!
       %div{:class => "homepage"}
-        =link_to 'Homepage', employees_path
+        -if session[:current_user]
+          =link_to 'Logout', logout_url
+      %div{:class => "homepage"}
+        -if session[:current_user]
+          =link_to 'Homepage', punch_hours_url
+        -else
+          =link_to 'Homepage', employees_path
       %div{:class => "homepage"}
         -if session[:user_id] 
           =link_to "Logout of Google", session_logout_url
