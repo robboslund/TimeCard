@@ -1,19 +1,24 @@
 -#  This file is app/views/employees/manager_view_hours.html.haml
+:css
+  form label {
+    clear:both;
+    white-space: nowrap;
+    display:inline;
+  }
+  h4 {
+    display:inline;
+  }
 %h1 Manager View
 %h3 Viewing Employee Hours
-%table#Employee
-  %thead
-    %tr
-      %th Employee
-      %th Hours
-      %th Status
-  %tbody
-  - @employee_hours.each do |emp|
-    %tr
-      %form{:controller => "managers", :action => "manager_view_hours/change_status",:method =>"post"}
-        %td=label_tag(:user,emp.username)
-        %td=label_tag(:hours,emp.hours)
-        %td=emp.status
-        =hidden_field :object,:id,:value =>emp.id
-        %td= select_tag(:status, options_for_select([["pending",0],["approved",1],["denied",2]]))
-        %td=button_to '+'
+%h4 Employee
+%h4 Hours
+%h4 Status
+- @employee_hours.each do |emp|
+  %div 
+    %form{:controller => "managers", :action => "manager_view_hours/change_status",:method =>"post"}
+      =label_tag(:user,emp.username) 
+      =label_tag(:hours,emp.hours)
+      =emp.status
+      =hidden_field :object,:id,:value =>emp.id
+      = select_tag(:status, options_for_select([["pending",0],["approved",1],["denied",2]]))
+      =button_to '+'
