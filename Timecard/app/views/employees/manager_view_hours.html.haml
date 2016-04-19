@@ -28,6 +28,17 @@
 
 %h1 Manager View
 %h3 Viewing Employee Hours
+%table
+  %th
+    Employee
+  %th
+    Hours
+  - @employee.each do |ent|
+    %tr
+      %td 
+        =label_tag(:user,ent.username)
+      %td 
+        =label_tag(:hours,ent.hours_worked)
 %h4 Employee
 %h4 Hours
 %h4 Status
@@ -40,5 +51,7 @@
     %div 
       =emp.status
     =hidden_field :object,:id,:value =>emp.id
+    =hidden_field :object,:user,:value =>emp.username
+    =hidden_field :object,:hours,:value =>emp.hours
     = select_tag(:status, options_for_select([["pending",0],["approved",1],["denied",2]]))
     =button_to '+'
