@@ -17,17 +17,22 @@ class ManagersController < EmployeesController
     id = params[:object][:id]
     case status
     when '0'
-      status ="pending"
+      status ="pending" 
+      if (Employee_Hour.where(id: id)[0].status == "approved")
+        emp= Employee.find_by username: params[:object][:user]
+        hours=  emp.hours_worked - params[:object][:hours].to_i 
+        Employee.update(emp.id,:hours_worked => hours)
+     end
     when '1'
       status ="approved"
-      if (Employee_Hour.find_by(id).status != "approved")
+      if (Employee_Hour.where(id: id)[0].status != "approved")
         emp= Employee.find_by username: params[:object][:user]
         hours= params[:object][:hours].to_i + emp.hours_worked
        Employee.update(emp.id,:hours_worked => hours)
      end
     when '2'
       status ="denied"
-      if (Employee_Hour.find_by(id).status == "approved")
+      if (Employee_Hour.where(id: id)[0].status == "approved")
         emp= Employee.find_by username: params[:object][:user]
         hours=  emp.hours_worked - params[:object][:hours].to_i 
         Employee.update(emp.id,:hours_worked => hours)
