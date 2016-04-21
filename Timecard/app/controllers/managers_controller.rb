@@ -1,8 +1,17 @@
 class ManagersController < EmployeesController
   def manager_view_hours
+    if session[:current_user]
+      emp= Employee.find_by username: session[:current_user]
+      if emp.isManager == 1
+        redirect_to employees_path
+      end
+    else
+      redirect_to employees_path
+    end
     @employee_hours = Employee_Hour.all
     @employee =Employee.all
   end
+  
   def change_status
     status = params[:status]
     id = params[:object][:id]
